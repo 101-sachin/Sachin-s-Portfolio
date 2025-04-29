@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Logs
 logs
 *.log
@@ -25,6 +24,3 @@ dist-ssr
 *.sln
 *.sw?
 .env
-=======
-hello
->>>>>>> ec811ae24e308883edc5ac957e056f14b985594f
