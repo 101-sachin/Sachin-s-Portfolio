@@ -1,26 +1,21 @@
 const express = require("express");
+const cors = require("cors");
 require("dotenv").config();
 
-const homepage = require('./api/homepage');
-const skills =require('./api/skills')
-
-try {
-  require("./dbconfig/dbconfig");
-} catch (err) {
-  console.log("Database config failed to load:", err);  
-}
-
 const app = express();
-const PORT = process.env.SERVER_PORT;
+const PORT = process.env.SERVER_PORT || 4000;
 
-app.use('/home', homepage);
-app.use('/skills' , skills)
+app.use(cors());
+app.use(express.json());
 
+require("./dbconfig/dbconfig");
+
+const homepageRouter = require('./api/homepage');
+const skillsRouter = require('./api/skills');
+
+app.use('/home', homepageRouter);
+app.use('/skills', skillsRouter);
 
 app.listen(PORT, () => {
-    try {
-        console.log('Server started');
-    } catch (error) {
-        console.log(error)
-    }
+  console.log(`Server started on port ${PORT}`);
 });
