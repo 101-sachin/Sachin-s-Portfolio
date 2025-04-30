@@ -1,13 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
+import React from "react";
+import { WindowSizeContextProvider } from "./context/WindowSizeContext";
+import Home from "./pages/Home";
 
-import { WindowSizeContextProvider } from './context/WindowSizeContext';
-
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+const App =()=>{
+  return(
     <WindowSizeContextProvider>
-      <h1>Hello World</h1>
+      <Home />
     </WindowSizeContextProvider>
-  </React.StrictMode>
-);
+  )
+}
+
+export default App;

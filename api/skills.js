@@ -1,16 +1,14 @@
 const express = require("express");
+const router = express.Router();
 const db = require("../dbconfig/dbconfig");
 
-const app = express();
-
-app.get("/", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
-    const [social] = await db.query(
-      "SELECT skills FROM profile");
-    res.status(200).json(social);
+    const [skills] = await db.query("SELECT skills FROM profile");
+    res.status(200).json(skills);
   } catch (error) {
-    res.status(404).json({ error: "Data Not fetch" });
+    res.status(500).json({ error: "Failed to fetch skills" });
   }
 });
 
-module.exports = app
+module.exports = router;
