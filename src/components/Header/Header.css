@@ -1,0 +1,33 @@
+.header-container{
+    width: 100%;
+    position: fixed;
+    background-color: #1b1b1b;
+    color: #9c9c9c;
+    font-size: 18px;
+}
+
+.header-div{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.logo-div :hover{
+    color: #fff;
+}
+
+.header-link-container{
+    display: flex;
+    gap: 20px;
+    padding: 10px;
+}
+
+.header-link-item{
+    cursor: pointer;
+}
+
+.header-link-item:hover{
+    color: #fff;
+    transition: color 0.3s ease;
+}

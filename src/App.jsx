@@ -1,13 +1,21 @@
 import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { WindowSizeContextProvider } from "./context/WindowSizeContext";
-import Home from "./pages/Home";
+import Home from "./pages/Home/Home";
+import Header from "./components/Header/Header";
 
-const App =()=>{
-  return(
+const App = () => {
+  return (
     <WindowSizeContextProvider>
-      <Home />
+      <Router>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+        </Routes>
+      </Router>
     </WindowSizeContextProvider>
-  )
-}
+  );
+};
 
 export default App;
