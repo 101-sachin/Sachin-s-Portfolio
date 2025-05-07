@@ -1,0 +1,16 @@
+.project-section {
+  padding-top: 3.5rem;
+  min-height: 100vh;
+}
+.section {
+  padding: 100px 20px;
+  background-color: #f4f4f4;
+}
+
+.section-title {
+  font-size: 2rem;
+}
+
+.section-content {
+  font-size: 1.2rem;
+}
