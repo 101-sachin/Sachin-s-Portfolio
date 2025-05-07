@@ -1,0 +1,14 @@
+.section {
+    padding: 100px 20px;
+    background-color: #f4f4f4;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .section-content {
+    font-size: 1.2rem;
+  }
+  
