@@ -16,7 +16,7 @@
   max-width: 1200px;
   width: 100%;
   gap: 3rem;
-  flex-wrap: wrap;
+  margin-top: -10%;
 }
 
 .left-content {
