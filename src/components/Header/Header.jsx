@@ -1,72 +1,83 @@
-import React, { useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import React, { useState, useRef, useEffect } from "react";
 import "./Header.css";
 
+const sections = [
+  { id: "home", label: "Home" },
+  { id: "projects", label: "Projects" },
+  { id: "skills", label: "Skills" },
+  { id: "experience", label: "Experience" },
+  { id: "contact", label: "Get In Touch" },
+];
+
 const Header = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
+  const headerRef = useRef(null);
 
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
     if (section) section.scrollIntoView({ behavior: "smooth" });
+    setActiveSection(id); // set manually to reflect active immediately
   };
 
-  const handleNavClick = (id, route) => {
-    setMenuOpen(false);
-    if (location.pathname === "/" || location.pathname === "/home") {
-      scrollToSection(id);
-    } else {
-      navigate(`/${route}`);
-    }
-  };
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        headerRef.current &&
+        !headerRef.current.contains(event.target) &&
+        window.innerWidth <= 767
+      ) {
+        setMenuOpen(false);
+      }
+    };
 
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.find((entry) => entry.isIntersecting);
+        if (visible) {
+          setActiveSection(visible.target.id);
+        }
+      },
+      { rootMargin: "0px 0px -40% 0px", threshold: 0.25 }
+    );
+
+    sections.forEach(({ id }) => {
+      const section = document.getElementById(id);
+      if (section) observer.observe(section);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <nav className={`header-container ${menuOpen ? "header-open" : ""}`}>
+    <nav
+      ref={headerRef}
+      className={`header-container ${menuOpen ? "header-open" : ""}`}>
       <div className="header-div">
         <div className="logo-div">
-          <a href="/">Sachin</a>
+          <a className="logo" onClick={() => scrollToSection("home")}>Sachin</a>
         </div>
 
-        <div className="hamburger-menu" onClick={toggleMenu}>
+        <div className="hamburger-menu" onClick={() => setMenuOpen(!menuOpen)}>
           {menuOpen ? "✕" : "☰"}
         </div>
 
         <ul className={`nav-links ${menuOpen ? "show" : ""}`}>
-          <li
-            className="nav-link-item"
-            onClick={() => handleNavClick("home", "")}
-          >
-            Home
-          </li>
-          <li
-            className="nav-link-item"
-            onClick={() => handleNavClick("projects", "projects")}
-          >
-            Projects
-          </li>
-          <li
-            className="nav-link-item"
-            onClick={() => handleNavClick("skills", "skills")}
-          >
-            Skills
-          </li>
-          <li
-            className="nav-link-item"
-            onClick={() => handleNavClick("experience", "experience")}
-          >
-            Experience
-          </li>
-          <li
-            className="nav-link-item"
-            onClick={() => handleNavClick("contact", "contact")}
-          >
-            Get In Touch
-          </li>
+          {sections.map(({ id, label }) => (
+            <li
+              key={id}
+              className={`nav-link-item ${
+                activeSection === id ? "active" : ""
+              }`}
+              onClick={() => scrollToSection(id)}>
+              {label}
+            </li>
+          ))}
         </ul>
       </div>
     </nav>
