@@ -66,12 +66,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      {/* Additional Sections */}
-      <Project />
-      <Skills />
-      <Experience />
-      <Contact />
     </div>
   );
 };
