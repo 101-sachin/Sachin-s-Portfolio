@@ -1,123 +1,177 @@
-.home-container {
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+.home-container{
   width: 100%;
+  background-color: #1B1B1B;
+  padding: 1rem 1rem 3rem;
   min-height: 100vh;
-  background-color: #000;
   display: flex;
-  justify-content: center;
   align-items: center;
-  padding: 2rem;
-  color: white;
+  font-family: 'Poppins', sans-serif;
 }
 
-.home-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
+.home-content{
   width: 100%;
-  gap: 3rem;
-  margin-top: -10%;
-}
-
-.left-content {
-  flex: 1;
-  min-width: 300px;
-}
-
-.right-content {
-  flex: 1;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column-reverse;
+  gap: 2rem;
+  padding-top: 4rem;
 }
 
-.profile-name {
-  font-size: 2.5rem;
-  font-weight: bold;
+.left-content{
+  width: 100%;
+}
+
+.profile-name{
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  letter-spacing: -0.5px;
   margin-bottom: 0.5rem;
 }
 
-.profile-title {
+.profile-title{
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-}
-
-.profile-intro {
-  font-size: 1rem;
-  color: #ccc;
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-  max-width: 700px;
-  width: 100%;
-  word-break: break-word;
-  text-align: justify;
-  hyphens: auto;
-}
-
-.resume-button {
-  background-color: #3f8e00;
-  color: white;
-  font-weight: bold;
-  padding: 0.75rem 1.5rem;
-  border-radius: 10px;
-  text-decoration: none;
-  display: inline-block;
-  margin-bottom: 1.5rem;
-  transition: background 0.3s ease;
-}
-
-.resume-button:hover {
-  background-color: #34a020;
-  transform: scale(1.03);
-}
-
-.social-icons {
-  padding-top: 1rem;
-  display: flex;
-  gap: 2rem;
-  font-size: 1.5rem;
-}
-
-.social-icons a {
-  cursor: pointer;
-  color: #9c9c9c;
-}
-
-.social-icons a:hover {
+  font-weight: 500;
   color: #fff;
-  transform: scale(1.2);
+  text-align: center;
+  padding-bottom: 0.5rem;
+  letter-spacing: 0.5px;
 }
 
-.profile-image {
+.profile-intro{
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #fff;
+  word-wrap: break-word;
+  word-spacing: normal;
+  padding-bottom: 0.5rem;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.right-content{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.profile-image{
   width: 280px;
-  max-height: 280px;
+  max-height: 300px;
   border-radius: 50%;
   object-fit: cover;
+  box-shadow: 0 0 20px rgba(9, 132, 227, 0.3);
 }
 
-@media (max-width: 768px) {
+.resume-btn-container{
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem 0;
+}
+
+.resume-btn{
+  padding: 12px 32px;
+  background-color: #0000ff;
+  color: #fff;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.resume-btn:hover{
+  background-color: #0000ffbe;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 255, 0.3);
+}
+
+.social-icons{
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+.social-icons .icons{
+  font-size: 1.5rem;
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.social-icons .icons:hover {
+  color: #0984e3;
+  transform: translateY(-3px);
+}
+
+@media (min-width: 767px) {
+  .home-container {
+    padding: 1rem 2rem 3rem;
+  }
+
   .home-content {
-    flex-direction: column-reverse;
+    max-width: 720px;
+    margin: 0 auto;
+    padding-top: 5rem;
+  }
+
+  .profile-name {
+    font-size: 3.5rem;
+  }
+
+  .profile-title {
+    font-size: 1.8rem;
+  }
+
+  .profile-intro {
+    font-size: 1.3rem;
+  }
+}
+
+@media (min-width: 1023px) {
+  .home-container {
+    padding: 1rem 2rem 3rem;
+  }
+
+  .home-content {
+    max-width: 1280px;
+    margin: 0 auto;
+    align-items: center;
+    padding-top: 6rem;
+    flex-direction: row;
+    gap: 4rem;
+  }
+
+  .left-content {
+    width: 50%;
     text-align: left;
   }
-
-  .profile-name,
+  .right-content{
+    width: 50%;
+  }
+  .profile-name {
+    text-align: left;
+    font-size: 48px;
+  }
   .profile-title {
-    text-align: center;
+    text-align: left;
+    font-size: 32px;
   }
-
-  .resume-button {
-    display: flex;
-    justify-content: center;
+  .profile-intro {
+    text-align: left;
+    font-size: 20px;
+    max-width: 90%;
   }
-
-  .left-content,
-  .right-content {
-    flex: unset;
+  .resume-btn-container {
+    justify-content: flex-start;
   }
-
   .social-icons {
-    justify-content: center;
+    justify-content: flex-start;
   }
 }
