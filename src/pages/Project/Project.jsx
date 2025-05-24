@@ -14,7 +14,7 @@ const Project = () => {
       .then((data) => setProjects(data))
       .catch((error) => {
         console.error("Error fetching projects:", error);
-        // Fallback projects if API fails
+        
         setProjects([
           {
             title: "Portfolio Website",
