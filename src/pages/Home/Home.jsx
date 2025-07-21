@@ -4,7 +4,7 @@ import "./Home.css";
 import { FaLinkedin, FaGithub, FaTwitter, FaEnvelope } from "react-icons/fa";
 
 const Home = () => {
-  const API_URL = "https://sachin-s-portfolio-gilt.vercel.app/home";
+  const API_URL = "http://localhost:4000/home";
   const [profile, setProfile] = useState(null);
 
   useEffect(() => {
@@ -13,7 +13,7 @@ const Home = () => {
         if (!res.ok) throw new Error("Network response was not ok");
         return res.json();
       })
-      .then((data) => setProfile(data[0]))
+      .then((data) => setProfile(data[0]))  
       .catch(() =>
         setProfile({
           name: "Sachin",

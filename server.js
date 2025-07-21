@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
+require("./dbconfig/mongodb");
 
 const app = express();
 const PORT = process.env.SERVER_PORT || 4000;
@@ -8,7 +9,6 @@ const PORT = process.env.SERVER_PORT || 4000;
 app.use(cors());
 app.use(express.json());
 
-require("./dbconfig/dbconfig");
 
 const homepageRouter = require('./api/homepage');
 const skillsRouter = require('./api/skills');

@@ -1,13 +1,16 @@
-const express = require("express");
+const express = require('express');
+const Profile = require('../models/Profile');
 const router = express.Router();
-const db = require("../dbconfig/dbconfig");
 
-router.get("/", async (req, res) => {
+router.get('/', async (req, res) => {
   try {
-    const [skills] = await db.query("SELECT skills FROM profile");
-    res.status(200).json(skills);
+    const profile = await Profile.findOne({}, { skills: 1, _id: 0 });
+    if (!profile || !Array.isArray(profile.skills) || profile.skills.length === 0) {
+      return res.status(200).json({ skills: [] });
+    }
+    return res.status(200).json({ skills: profile.skills });
   } catch (error) {
-    res.status(500).json({ error: "Failed to fetch skills" });
+    res.status(500).json({ error: 'Server error while fetching skills data' });
   }
 });
 

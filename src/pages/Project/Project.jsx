@@ -3,7 +3,7 @@ import "./Project.css";
 
 const Project = () => {
   const [projects, setProjects] = useState([]);
-  const API_URL = "https://sachin-s-portfolio-gilt.vercel.app/projects";
+  const API_URL = "http://localhost:4000/projects";
 
   useEffect(() => {
     fetch(API_URL)
@@ -19,20 +19,20 @@ const Project = () => {
 
   return (
     <section className="project-section" id="projects">
-      <h2 className="section-title">Projects</h2>
+      <h2 className="project-title">Projects</h2>
       <div className="projects-grid">
         {projects.map((project, index) => (
           <div key={index} className="project-card">
             <img 
-              src={project.image || "https://via.placeholder.com/300x200?text=Project+Image"} 
+              src="edu_minds.jpeg"
               alt={project.name} 
               className="project-image"
               onError={(e) => {
-                e.target.src = "https://via.placeholder.com/300x200?text=Project+Image";
+                e.target.src = "edu_minds.jpeg";
               }}
             />
             <div className="project-content">
-              <h3 className="project-title">{project.name}</h3>
+              <h3 className="project-name">{project.name}</h3>
               <p className="project-description">{project.description}</p>
               <div className="project-links">
                 {project.github_links && (

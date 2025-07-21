@@ -5,16 +5,12 @@
   padding: 2rem 1rem;
 }
 
-.section-title {
-  padding-top: 1.5rem;
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
-  text-align: center;
+.project-title {
+  font-size: 1.3rem;
   color: #2d3436;
-}
-
-.section-content {
-  font-size: 1.2rem;
+  margin-bottom: 50px;
+  text-align: center;
+  font-weight: 600;
 }
 
 .projects-grid {
@@ -57,7 +53,7 @@
   flex-direction: column;
 }
 
-.project-title {
+.project-name {
   font-size: 1.3rem;
   color: #2d3436;
   margin-bottom: 0.8rem;
@@ -95,7 +91,6 @@
   transform: translateY(-2px);
 }
 
-/* Tablet and larger screens */
 @media (min-width: 768px) {
   .projects-grid {
     gap: 2rem;
@@ -112,7 +107,6 @@
   }
 }
 
-/* Desktop and larger screens */
 @media (min-width: 1024px) {
   .section-title {
     font-size: 2.5rem;
