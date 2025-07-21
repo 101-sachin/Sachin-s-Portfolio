@@ -19,9 +19,7 @@ const Skills = () => {
         }
       })
       .catch((error) => {
-        setSkills([
-          "Hello"
-        ]);
+        console.log(error);
       });
   }, []);
 
